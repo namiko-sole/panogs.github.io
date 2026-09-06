@@ -1,7 +1,7 @@
 # PanoGS
 
 This is the repository that contains source code for the
-[PanoGS project page](https://panogs.github.io).
+[PanoGS project page](https://namiko-sole.github.io/panogs.github.io/).
 
 PanoGS: Panorama-based 3D Scene Stylization with Style and Geometry Consistency
 (Yihong He, Haiyong Jiang, Yuxi Wang, Dongbo Yu, Jun Xiao).
