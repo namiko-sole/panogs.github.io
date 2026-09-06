@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="PanoGS: Panorama-based 3D Scene Stylization with Style and Geometry Consistency.">
+  <meta name="keywords" content="Panorama, 3D Scene Stylization, Gaussian Splatting, Geometry Consistency">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PanoGS: Panorama-based 3D Scene Stylization with Style and Geometry Consistency</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/png" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="./static/images/icon.png"
+                                              alt="PanoGS icon"
+                                              class="title-icon"/>PanoGS: Panorama-based 3D Scene
+            Stylization with Style and Geometry Consistency</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Yihong He<sup>1</sup>,</span>
+            <span class="author-block">Haiyong Jiang<sup>1</sup>,</span>
+            <span class="author-block">Yuxi Wang<sup>2</sup>,</span>
+            <span class="author-block">Dongbo Yu<sup>1</sup>,</span>
+            <span class="author-block">Jun Xiao<sup>1*</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>School of Artificial Intelligence, University of Chinese Academy of Sciences,</span>
+            <span class="author-block"><sup>2</sup>Faculty of Information Science and Technology, Ocean University of China</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block publication-venue">Accepted to IEEE Transactions on Image Processing (TIP) 2026</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">* Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://doi.org/10.1109/TIP.2026.3731941"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/namiko-sole/PanoGS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <img id="teaser" class="figure-img" src="./static/images/teaser.jpg" alt="PanoGS teaser"/>
+      <p class="figure-caption">
+        Given a set of multi-view images and an arbitrary reference style image, PanoGS enables high-fidelity 3D scene stylization that preserves
+        geometric accuracy and semantic coherence across multiple viewpoints. The final output is
+        rendered in both panoramic and perspective views to showcase the stylization quality of the
+        entire scene.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section has-background-light">
+  <div class="container is-max-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified prose">
+          <p>
+            3D scene stylization offers enhanced immersion and visual coherence for 3D experiences
+            in digital content creation and augmented reality applications.
+            Existing approaches frequently struggle to balance style consistency across different
+            viewpoints, geometry consistency as reference, and zero-shot generalization to unseen
+            styles.
+          </p>
+          <p>
+            To overcome these problems, we present PanoGS, a panorama-based 3D scene stylization
+            framework incorporating two innovative designs: Circular Consistent Stylization and
+            Progressive Propagation Refinement.
+            Circular Consistent Stylization imposes style priors, geometric structure, and circular
+            denoising on a Stable Diffusion-based stylization, ensuring both faithful style transfer
+            from reference images and preservation of original scene geometry with seamless
+            circular continuity.
+            Progressive Propagation Refinement extends single-viewpoint panorama stylization to
+            multi-viewpoint panoramas through color propagation and novel-view refinement,
+            effectively addressing the stylization of occluded regions under sparse viewpoints.
+          </p>
+          <p>
+            Experiments demonstrate that PanoGS outperforms existing methods in quantitative
+            metrics, with an average improvement of 9.23% on CLIP and 29.43% and 28.58% on
+            short-range LPIPS and RMSE. Furthermore, user studies indicate strong preference rates
+            for our method regarding geometric (75.00%), stylistic (66.37%), and semantic
+            consistency (74.11%). Overall, our approach achieves high-quality 3D stylization with
+            superior style consistency and geometric alignment to input in a zero-shot manner.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Supplementary video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="content">
+          <video id="supplementary-video"
+                 class="video-frame"
+                 controls
+                 muted
+                 playsinline
+                 preload="metadata"
+                 poster="./static/videos/poster.jpg">
+            <source src="./static/videos/supplementary.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ Supplementary video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+
+        <!-- Indoor results. -->
+        <div class="content has-text-centered">
+          <img src="./static/images/results_indoor.jpg"
+               alt="Qualitative comparison on the Playroom scene"
+               class="figure-img w-pair"/>
+          <p class="figure-caption">
+            Qualitative comparisons on the Playroom scene (DeepBlending). The first column shows
+            the panoramic view result, while the other columns show results in three perspective
+            views. PanoGS achieves harmonized stylization across the entire scene with clean,
+            artifact-free results, while existing methods suffer from unnatural line textures,
+            color contamination, and noisy floaters.
+          </p>
+        </div>
+        <!--/ Indoor results. -->
+
+        <!-- Outdoor results. -->
+        <div class="content has-text-centered">
+          <img src="./static/images/results_outdoor.jpg"
+               alt="Qualitative comparison on the Train scene"
+               class="figure-img w-pair"/>
+          <p class="figure-caption">
+            Qualitative results on the Train scene (Tanks and Temples). PanoGS successfully
+            stylizes the train in red as in the reference image, while the compared methods
+            produce mismatched colors. PanoGS also preserves clear text textures and window
+            structures on the train.
+          </p>
+        </div>
+        <!--/ Outdoor results. -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Robustness and Scalability</h2>
+
+        <!-- Sparse inputs. -->
+        <div class="content has-text-justified prose">
+          <p>
+            <b>Robustness to sparse inputs.</b> Even when the scene is reconstructed from only 10
+            sparse input images, the stylization pipeline maintains perceptual consistency across
+            observed regions without structural degradation.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/sparse_comparison.jpg"
+               alt="Robustness under sparse inputs"
+               class="figure-img w-90"/>
+          <p class="figure-caption">
+            Robustness under sparse input views. The top row displays the raw scene, reference
+            style, initial styled panorama, and styled scene. The middle row shows perspective
+            views under dense inputs (369 images), and the bottom row under sparse inputs (10
+            images); the red circle indicates artifacts.
+          </p>
+        </div>
+        <!--/ Sparse inputs. -->
+
+        <!-- Large multi-room scenes. -->
+        <div class="content has-text-justified prose">
+          <p>
+            <b>Large-scale multi-room scenes.</b> With a room-wise partition strategy that divides
+            the scene into local regions and stylizes each region independently with overlapping
+            references, PanoGS scales to large multi-room spaces with smooth transitions across
+            room boundaries.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/big_room_2.jpg"
+               alt="Stylization on a large multi-room scene"
+               class="figure-img"/>
+          <p class="figure-caption">
+            Stylization results on a large-scale multi-room scene. The top row shows the raw scene
+            captured from multiple rooms, and the bottom row presents the stylized results.
+          </p>
+        </div>
+        <!--/ Large multi-room scenes. -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section has-background-light">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <!-- Panorama stylization comparison. -->
+        <h2 class="title is-3 has-text-centered">Panorama Stylization Comparison</h2>
+        <div class="content has-text-centered">
+          <img src="./static/images/stylization_comparison.jpg"
+               alt="Comparison on panorama stylization"
+               class="figure-img w-80"/>
+          <p class="figure-caption">
+            Comparison on panorama stylization with (a) AdaIN, (b) CAP-VST, (c) StyleID, and (d)
+            InstantStyle. PanoGS avoids geometric distortions, color bleeding, and noise artifacts.
+          </p>
+        </div>
+        <!--/ Panorama stylization comparison. -->
+
+        <!-- Diverse styles. -->
+        <h2 class="title is-3 has-text-centered">Diverse Styles</h2>
+        <div class="content has-text-justified prose">
+          <p>
+            PanoGS works in a zero-shot, training-free manner, so arbitrary reference styles can be
+            applied to the same scene without any additional training. Region-wise style fusion is
+            also supported by segmenting object regions within a panorama and applying different
+            styles to designated regions, opening up vast possibilities for customized artistic
+            creation.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/results_diverse.jpg"
+               alt="Stylization with diverse styles"
+               class="figure-img"/>
+          <p class="figure-caption">
+            Stylization results of the same scene with diverse reference styles.
+          </p>
+        </div>
+        <!--/ Diverse styles. -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{he2026panogs,
+  Author  = {Yihong He and Haiyong Jiang and Yuxi Wang and Dongbo Yu and Jun Xiao},
+  Title   = {PanoGS: Panorama-based 3D Scene Stylization with Style and Geometry Consistency},
+  Journal = {IEEE Transactions on Image Processing},
+  Year    = {2026},
+  doi     = {10.1109/TIP.2026.3731941},
+  note    = {Early Access},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <!-- <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p> -->
+          <p>
+            The page template is borrowed from <a
+              href="https://nerfies.github.io">Nerfies</a>. We thank the authors for sharing it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

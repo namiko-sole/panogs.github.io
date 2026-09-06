@@ -1,0 +1,145 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* Wider containers so the long paper title and figures fill fewer lines. */
+.container.is-max-widescreen {
+  max-width: 1344px;
+}
+
+/* Slightly taller section bands for a calmer vertical rhythm. */
+.section {
+  padding: 3.5rem 1.5rem;
+}
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Leading icon of the paper title. */
+.publication-title .title-icon {
+  display: inline-block;
+  height: 0.95em;
+  width: 0.95em;
+  margin-right: 0.18em;
+  vertical-align: -0.08em;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+/* Venue line rendered as a subtle pill. */
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  background-color: #f5f5f5;
+  padding: 0.35rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-top: 0.4rem;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* Figures: consistent framing across white and gray section bands.
+   Height is capped to one viewport so every figure fits on a single screen. */
+.figure-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(1080px, 100%);
+  max-height: 85vh;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.figure-img.w-90 {
+  max-width: min(972px, 100%);
+}
+
+.figure-img.w-80 {
+  max-width: min(864px, 100%);
+}
+
+.figure-img.w-60 {
+  max-width: min(648px, 100%);
+}
+
+/* Paired figures rendered at one shared width. The 88vh term is derived from
+   the tallest paired aspect ratio so the height cap still fits one viewport. */
+.figure-img.w-pair {
+  max-width: min(920px, 88vh, 100%);
+}
+
+/* Figure captions in the CUT3R style: gray body-size justified text. */
+.figure-caption {
+  color: #808080;
+  font-weight: 400;
+  text-align: justify;
+  max-width: 1080px;
+  margin: 0.75rem auto 0;
+}
+
+/* Body prose capped for readable line lengths on wide containers. */
+.prose {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Supplementary video frame. */
+.video-frame {
+  width: 70%;
+  border-radius: 10px;
+}
+
+/* BibTeX code block. */
+#BibTeX pre {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
